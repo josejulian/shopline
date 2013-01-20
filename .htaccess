@@ -1,0 +1,12 @@
+#ErrorDocument 404 /buy.me/404.html
+
+Options -MultiViews
+RewriteEngine on
+
+RewriteRule ^$ index.php?url=/ [QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^(.*)$ index.php?url=$1 [QSA]
+
