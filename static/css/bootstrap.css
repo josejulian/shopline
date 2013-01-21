@@ -6029,6 +6029,10 @@ div.searcher input#input-search {
   width: 80%;
   height: 45px;
 }
+div.searcher button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 div.button-register {
   width: 100%;
   display: inline-block;
