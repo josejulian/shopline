@@ -3,7 +3,7 @@ define('DS', DIRECTORY_SEPARATOR);
 define('PROJECT_PATH', realpath(dirname(__file__)) . DS);
 define('easyPHP_PATH', PROJECT_PATH . 'easyPHP'. DS);
 define('CORE_PATH', easyPHP_PATH . 'core' . DS);
-define('BASE_URL', 'http://localhost/shopline/');
+define('BASE_URL', '/shopline/');
 
 
 define('STATIC_DIR', BASE_URL . 'static' . DS);
