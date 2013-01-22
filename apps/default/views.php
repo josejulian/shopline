@@ -19,4 +19,12 @@ function about_us($req){
     render_template("about_us.html");
 }
 
+function admin_panel($req){
+	render_template("home2.html");
+}
+
+function notifications($req){
+	render_template("html_pieces/notifications.html");
+}
+
 ?>

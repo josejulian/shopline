@@ -1,5 +1,5 @@
 <?php
-function render_template($template, $parameters){
+function render_template($template, $parameters = null){
 	$template_path = TEMPLATES_DIR . $template;
 	if($parameters){
 		$params = $parameters;
