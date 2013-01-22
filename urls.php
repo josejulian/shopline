@@ -1,13 +1,13 @@
 <?php
 $urls_array = array(
-	"^\/$" => array(
-		"app" => "default",
-		"method" => "home"
-		),
-	"^login$" => array(
-		"app" => "default",
-		"method" => "login"
-		),
+    "^\/$" => array(
+        "app" => "default",
+        "method" => "home"
+        ),
+    "^login$" => array(
+        "app" => "default",
+        "method" => "login"
+        ),
     "^register$" => array(
         "app" => "default",
         "method" => "register"
@@ -23,6 +23,10 @@ $urls_array = array(
     "^notifications$" => array(
         "app" => "default",
         "method" => "notifications"
+        ),
+    "^users\/" => array(
+        "app" => "default",
+        "include" => "urls.php"
         )
-	);
+    );
 ?>

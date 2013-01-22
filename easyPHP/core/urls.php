@@ -9,7 +9,7 @@ class Urls
 	}
 
 	public function url_parsing($req){
-		$ret = $this->match_url( $req->get_url() ); 
+		$ret = $this->match_url($this->main_urls_path, $req->get_url()); 
 		if($ret){
 			$app_view = $ret['app'];
 			$view_path = PROJECT_PATH.'apps'.DS.$app_view.DS.'views.php';
@@ -42,22 +42,43 @@ class Urls
 		}
 	}
 
-	public function match_url($url){
+	public function match_url($file, $url, $url2 = null){
 		$a = array();
-		if(is_readable($this->main_urls_path)){
-			require_once $this->main_urls_path;
-			$exprs = array_keys($urls_array);
-			foreach ($exprs as $value) {
-				$expr = "/".$value."/";
-				// echo $expr;
-				if(preg_match($expr, $url)){
-					// echo " si es la url";
-					$a = $urls_array[$value];
-					// print_r($a);
-					break;
+		$first_url;
+		if(is_readable($file)){
+			require_once $file;
+			if($urls_array){
+				if($url2 == null){
+					$exprs = array_keys($urls_array);
+					foreach ($exprs as $value) {
+						$expr = "/".$value."/";
+						// echo $expr;
+						if(preg_match($expr, $url)){
+							// echo " si es la url";
+							$a = $urls_array[$value];
+							$first_url = $value;
+							// print_r($a);
+							break;
+						}else{
+							// echo " no es la url";
+						}
+					}	
 				}else{
-					// echo " no es la url";
+					$exprs = array_keys($urls_array);
+					foreach ($exprs as $value) {
+						$expr = "/".$url2.$value."/";
+						if(preg_match($expr, $url)){
+							// echo " si es la url";
+							$a = $urls_array[$value];
+							// print_r($a);
+							break;
+						}else{
+
+						}
+					}
 				}
+			}else{
+				echo "No existe urls_array :(";
 			}
 		}else{
 			$e = new Error();
@@ -65,13 +86,21 @@ class Urls
 			$e->set_error_message('
 				No such file urls.php within the project root directory
 				');
-			$e->set_file_error_path($this->main_urls_path);
+			$e->set_file_error_path($file);
 			$e->set_help('
 				Create a file named urls.php within '. PROJECT_PATH . ' directory'
 				);
 			render_easyPHP_template('errors.html', $e);
 		}
-		return($a);
+		
+		if($a){
+			if($a['include']){
+				$file = $view_path = PROJECT_PATH.'apps'.DS.$a["app"].DS.$a["include"];
+				return $this->match_url($file, $url, $first_url);
+			}else{
+				return $a;
+			}
+		}
 	}
 }
 
