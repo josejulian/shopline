@@ -16,15 +16,7 @@ $urls_array = array(
         "app" => "default",
         "method" => "about_us"
         ),
-    "^admin_panel$" => array(
-        "app" => "default",
-        "method" => "admin_panel"
-        ),
-    "^notifications$" => array(
-        "app" => "default",
-        "method" => "notifications"
-        ),
-    "^users\/" => array(
+    "^user\/" => array(
         "app" => "default",
         "include" => "urls.php"
         )

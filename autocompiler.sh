@@ -9,13 +9,14 @@ else
         if [ -d $1 ]; then
             if [ -d $2 ]; then
                 if [ -e $1$3 ]; then
-            filename=$( echo ${3%.*});
-            #echo "El nombre del archivo es: $filename";
+                    echo "Autocompiler is runing..."
+                    filename=$( echo ${3%.*});
+                    #echo "El nombre del archivo es: $filename";
                     #echo "el direcotrio a observar existe";
                     #echo "el direcotrio que guardara el .css compilado existe";
                     #echo "El archivo .less acompilar existe";
                     projectPath=$(pwd);     
-                    echo $projectPath;
+                    # echo $projectPath;
                     if [ -d /tmp/$1 ]; then
                         #echo "El directorio ya se encuentra en /tmp";              
                         for i in $(ls -l $1 | grep -v "^d" | awk '{print $9 }')

@@ -1,8 +1,12 @@
 <?php
 $urls_array = array(
-    "pedro$" => array(
+    "$" => array(
         "app" => "default",
-        "method" => "home"
+        "method" => "admin_panel"
+        ),
+    "notifications$" => array(
+        "app" => "default",
+        "method" => "notifications"
         )
     );
 ?>
