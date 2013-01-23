@@ -14,5 +14,8 @@
 	// echo "hola";
 
 	$urls = new Urls();
-	$urls->url_parsing(new Request);
+	$r = new Request();
+	// echo $r->get_url();
+	// print_r($r->get_args_GET());
+	$urls->url_parsing($r);
 ?>

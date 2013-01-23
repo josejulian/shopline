@@ -61,11 +61,6 @@ class Request extends Session
 		return $this->args_POST;
 	}
 
-	// public function get_args_post()
-	// {
-
-	// }
-
 	public function is_from_GET()
 	{
 		if($_GET){

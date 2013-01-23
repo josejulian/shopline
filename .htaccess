@@ -1,9 +1,15 @@
-#ErrorDocument 404 /buy.me/404.html
-
 Options -MultiViews
+
+<Files .htaccess>
+    order allow,deny
+    deny from all
+</Files>
+
+Options All -Indexes
+
 RewriteEngine on
 
-RewriteRule ^$ index.php?url=/ [QSA]
+RewriteRule ^$ index.php?url=/ [QSA,L]
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f

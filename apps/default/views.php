@@ -1,12 +1,13 @@
 <?php
 function home($req){
-	$a = array(
-		'id' => 12345,
-		'b' => array(
-			'id2' => 12345
-			)
-		);
-	render_template("home.html", $a);
+	// if ($req->is_in_session("logged")) {
+	// 	$req->del_from_session("logged");
+	// 	echo "ya esta una sesion iniciada";
+	// }else{
+	// 	echo "No hay sesion iniciada";
+	// 	$req->add_to_session("logged", true);
+		render_template("home.html");
+	// }
 }
 
 function login($req){

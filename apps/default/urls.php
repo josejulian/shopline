@@ -4,7 +4,7 @@ $urls_array = array(
         "app" => "default",
         "method" => "admin_panel"
         ),
-    "notifications$" => array(
+    "\/notifications$" => array(
         "app" => "default",
         "method" => "notifications"
         )

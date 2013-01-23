@@ -16,7 +16,7 @@ $urls_array = array(
         "app" => "default",
         "method" => "about_us"
         ),
-    "^user\/" => array(
+    "^user" => array(
         "app" => "default",
         "include" => "urls.php"
         )
