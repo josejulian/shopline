@@ -39,7 +39,7 @@ Despues de cumplir con todos los requisitos de arriba siga los siguientes pasos:
 
         b) Si efectivamente si tiene git instalado en su sistema entonces ejecute la siguiente linea en consola (debe estar dentro de /var/www/)
             
-            git://github.com/house22/shopline.git 
+            git clone git://github.com/house22/shopline.git 
 
             La line anterior descargara todo el codigo de shopline a su sistema dentro del directorio donde se encuentra en este caso /var/www.
    
