@@ -1,0 +1,55 @@
+<?php
+require_once "engines/mysql.php";
+class Connect{
+    
+    private $engine;
+    private $user;
+    private $password;
+    private $host;
+    private $db;
+
+    public function __construct(){
+        require PROJECT_PATH . "settings.php";
+        if($DATABASE){
+            $this->engine = $DATABASE["engine"];
+            $this->user = $DATABASE["user"];
+            $this->password = $DATABASE["password"];
+            $this->host = $DATABASE["host"];
+            $this->db = $DATABASE["db"];
+        }else{
+            echo "No existe DATABASE dentro de settings.php";
+        }
+    }
+
+    public function connect(){
+        if($this->is_a_valid_engine()){
+            if ($this->engine == "mysql") {
+                return MySql::connect($this->host, $this->user, $this->password, $this->db);
+            }
+        }else{
+            echo "Invalid Engine";
+            exit;
+        }
+    }
+
+    public function disconnect(){
+        if($this->is_a_valid_engine()){
+            if ($this->engine == "mysql") {
+                MySql::disconnect();
+            }
+        }else{
+            echo "Invalid Engine";
+            exit;
+        }
+    }
+
+    public function is_a_valid_engine(){
+        if($this->engine == "mysql" or $this->engine == "postgres" or $this->engine == "sqlite"){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
+
+?>

@@ -15,10 +15,12 @@ define('TEMPLATES_DIR', PROJECT_PATH . 'templates' . DS);
 define('PROJECT_NAME', "Shopline");
 define('GITHUB_URL', "https://github.com/house22/shopline");
 
-$DATABASE = array(
-	'engine' => 'mysql', //mysql, postgres, sqlite
-	'user' => 'root',
-	'password' => '1q2w3e4r'
-	);
 
+$DATABASE = array(
+	"engine" => 'mysql', //mysql, postgres, sqlite
+	'user' => 'root',
+	'password' => '1q2w3e4r',
+    'host' => '127.0.0.1',
+    'db' => 'shopline'
+	);
 ?>

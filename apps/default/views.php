@@ -1,13 +1,16 @@
 <?php
+require_once CORE_PATH . 'views.php';
+require_once 'models.php';
 function home($req){
-	// if ($req->is_in_session("logged")) {
-	// 	$req->del_from_session("logged");
-	// 	echo "ya esta una sesion iniciada";
-	// }else{
-	// 	echo "No hay sesion iniciada";
-	// 	$req->add_to_session("logged", true);
+	
+	// $users = new Users();
+	// $users->is_registered_email("pedroj.1822@gmail.com");
+
+	if ($req->is_in_session("logged")) {
+		echo "ya esta una sesion iniciada";
+	}else{
 		render_template("home.html");
-	// }
+	}
 }
 
 function login($req){
@@ -26,6 +29,16 @@ function admin_panel($req){
 
 function notifications($req){
 	render_template("html_pieces/notifications.html");
+}
+
+function test($req){
+	$email = $req->get_POST("email");
+	$users = new Users();
+	if($users->is_registered_email($email)){
+		echo "true";
+	}else{
+		echo "false";
+	}
 }
 
 ?>

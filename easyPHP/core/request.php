@@ -1,5 +1,5 @@
 <?php
-
+require_once CORE_PATH . 'session.php';
 class Request extends Session 
 {
 	
@@ -59,6 +59,14 @@ class Request extends Session
 	public function get_args_POST()
 	{
 		return $this->args_POST;
+	}
+
+	public function get_POST($value){
+		if($_POST[$value]){
+			return $_POST[$value];
+		}else{
+			return false;
+		}
 	}
 
 	public function is_from_GET()

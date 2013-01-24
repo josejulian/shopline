@@ -19,6 +19,10 @@ $urls_array = array(
     "^user" => array(
         "app" => "default",
         "include" => "urls.php"
+        ),
+    "^test$" => array(
+        "app" => "default",
+        "method" => "test"
         )
     );
 ?>
