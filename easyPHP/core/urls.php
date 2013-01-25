@@ -1,4 +1,5 @@
 <?php
+require_once "views.php";
 class Urls
 {
 	private $main_urls_path;
@@ -47,7 +48,7 @@ class Urls
 		$first_url;
 		if(is_readable($file)){
 			require_once $file;
-			if($urls_array){
+			if(isset($urls_array)){
 				if($url2 == null){
 					$exprs = array_keys($urls_array);
 					foreach ($exprs as $value) {
@@ -93,8 +94,8 @@ class Urls
 			render_easyPHP_template('errors.html', $e);
 		}
 		
-		if($a){
-			if($a['include']){
+		if(isset($a)){
+			if(isset($a['include'])){
 				$file = $view_path = PROJECT_PATH.'apps'.DS.$a["app"].DS.$a["include"];
 				return $this->match_url($file, $url, $first_url);
 			}else{

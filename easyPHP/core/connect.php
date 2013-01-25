@@ -7,6 +7,7 @@ class Connect{
     private $password;
     private $host;
     private $db;
+    private $connection;
 
     public function __construct(){
         require PROJECT_PATH . "settings.php";
@@ -24,7 +25,8 @@ class Connect{
     public function connect(){
         if($this->is_a_valid_engine()){
             if ($this->engine == "mysql") {
-                return MySql::connect($this->host, $this->user, $this->password, $this->db);
+                $this->connection = MySql::connect($this->host, $this->user, $this->password, $this->db);
+                return $this->connection;
             }
         }else{
             echo "Invalid Engine";
@@ -35,7 +37,7 @@ class Connect{
     public function disconnect(){
         if($this->is_a_valid_engine()){
             if ($this->engine == "mysql") {
-                MySql::disconnect();
+                MySql::disconnect($this->connection);
             }
         }else{
             echo "Invalid Engine";

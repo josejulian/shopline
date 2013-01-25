@@ -23,7 +23,7 @@
                     <ul class="nav pull-right">
                     
                         <li class="dropdown">
-                            <a class="dropdown-toggle" href="#" data-toggle="dropdown"><i class="icon-signin"></i> Entrar <strong class="caret"></strong></a>
+                            <a id="a-login-dropdown" class="dropdown-toggle" href="#" data-toggle="dropdown"><i class="icon-signin"></i> Entrar <strong class="caret"></strong></a>
                             <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
                                 <form>
                                     <div class="row-fluid" id="alert-error-login" style="display: none;">
@@ -37,7 +37,7 @@
                                         </div>
                                     </div>
                                     <div class="row-fluid">
-                                            <input type='text' class='input-login' id='input-email-login' name='input_email_login' required placeholder='Nombre de usuario o Email' autofocus>
+                                            <input type='text' class='input-login' id='input-email-login' name='input_email_login' required placeholder='Nombre de usuario o Email'>
                                     </div>
                                     <div class="row-fluid">
                                             <input type='password' class='input-login' id='input-password-login' name='input-password-login' required placeholder='Contraseña'>
@@ -75,7 +75,7 @@
                             </div>
                             <div class="row-fluid">
                                 <div class="span12">    
-                                    <input type="text" id="input-search" placeholder="Ingrese aqui el nombre del producto o tienda a buscar">
+                                    <input type="text" id="input-search" placeholder="Ingrese aqui el nombre del producto o tienda a buscar" autofocus>
                                 </div>    
                                 <div class="span12">
                                     <button class="btn btn-large btn-primary"><i class="icon-search"></i> Buscar</button>
@@ -157,32 +157,39 @@
     <script type="text/javascript">
     $(document).ready(function() {
         $('#btn-login').click(function(e){
-            var email = $('#input-email-login').val();
-            var password = $('#input-password-login').val();
-            if(email != "" && password != ""){
+            if(!($(this).hasClass('disabled'))){
+                var email = $('#input-email-login').val();
+                var password = $('#input-password-login').val();
+                if(email != "" && password != ""){
+                    e.preventDefault();
+                    $.post("new_login", { 
+                        email: email,
+                        password: password
+                    }).done(function(data){
+                        if(data=="true"){
+                            $(location).attr('href','/');
+                            // $('#alert-success-login').slideToggle(300).delay(1500).slideToggle(300);
+                        }else{
+                            $('#alert-error-login').slideToggle(300).delay(1500).slideToggle(300);
+                            $('#btn-login').addClass("disabled");
+                            setTimeout("$('#btn-login').removeClass('disabled')",2100);
+                        }
+                    });               
+                }
+            }else{
                 e.preventDefault();
-                $.post("new_login", { 
-                    email: email,
-                    password: password
-                }).done(function(data){
-                    if(data=="true"){
-                        $('#alert-success-login').slideToggle(400).delay(1500).slideToggle(400);
-                    }else{
-                        $('#alert-error-login').slideToggle(400).delay(1500).slideToggle(400);
-                    }
-                });                
             }
         });
 
-    //         $.post("test", { email: "pedroj.1822@gmail.com"})
-    //             .done(function(data) {
-    //                 alert(data);
-    //                 if(data=="true"){
-    //                     alert("pedroj.1822@gmail.com si esta registrado");
-    //                 }else{
-    //                     alert("pedroj.1822@gmail.com no esta registrado");
-    //                 }
-    //         });
+            // $.post("test", { email: "pedroj.1822@gmail.com"})
+            //     .done(function(data) {
+            //         alert(data);
+            //         if(data=="true"){
+            //             alert("pedroj.1822@gmail.com si esta registrado");
+            //         }else{
+            //             alert("pedroj.1822@gmail.com no esta registrado");
+            //         }
+            // });
         });
     </script>
 </body>

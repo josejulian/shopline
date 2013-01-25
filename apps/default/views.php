@@ -7,7 +7,7 @@ function home($req){
 	// $users->is_registered_email("pedroj.1822@gmail.com");
 
 	if ($req->is_in_session("logged")) {
-		echo "ya esta una sesion iniciada";
+		render_template("home2.html");
 	}else{
 		render_template("home.html");
 	}
@@ -37,11 +37,17 @@ function new_login_user($req){
 	if($email and $password){
 		$user = new Users();
 		if($user->is_registered_user($email, $password)){
+			$req->add_to_session("logged", true);
 			echo 'true';
 		}else{
 			echo 'false';
 		}
 	}
+}
+
+function close_session($req){
+	$req->del_from_session("logged");
+	redirect_to_url("/");
 }
 
 function test($req){

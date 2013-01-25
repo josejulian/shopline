@@ -69,6 +69,14 @@ class Request extends Session
 		}
 	}
 
+	public function get_GET($value){
+		if($_GET[$value]){
+			return $_GET[$value];
+		}else{
+			return false;
+		}
+	}
+	
 	public function is_from_GET()
 	{
 		if($_GET){

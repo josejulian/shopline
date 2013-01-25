@@ -27,6 +27,10 @@ $urls_array = array(
     "^new_login$" => array(
         "app" => "default",
         "method" => "new_login_user"
+        ),
+    "^close_session$" => array(
+        "app" => "default",
+        "method" => "close_session"
         )
     );
 ?>

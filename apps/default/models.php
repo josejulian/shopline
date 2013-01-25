@@ -8,11 +8,11 @@ class Users extends Models{
     public function is_registered_email($email){
         $connection = $this->connect();
         $consult = ("SELECT * FROM Users WHERE Users_email = '". $email ."'");
-        // echo $consult;
+        echo $consult;
         $result = $connection->query($consult);
-        // print_r($result);
+        print_r($result);
         if($rows = $result->fetch_assoc()){
-            // echo json_encode($rows);
+            echo json_encode($rows);
             return true; 
         }else{
             return false;
