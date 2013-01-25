@@ -12,7 +12,7 @@ class Users extends Models{
         $result = $connection->query($consult);
         // print_r($result);
         if($rows = $result->fetch_assoc()){
-            // echo json_encode(new ArrayValue($rows), JSON_PRETTY_PRINT);
+            // echo json_encode($rows);
             return true; 
         }else{
             return false;

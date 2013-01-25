@@ -23,6 +23,10 @@ $urls_array = array(
     "^test$" => array(
         "app" => "default",
         "method" => "test"
+        ),
+    "^new_login$" => array(
+        "app" => "default",
+        "method" => "new_login_user"
         )
     );
 ?>
