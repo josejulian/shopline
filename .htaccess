@@ -9,10 +9,8 @@ Options All -Indexes
 
 RewriteEngine on
 
-RewriteRule ^$ index.php?url=/ [QSA,L]
-
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 
-RewriteRule ^(.*)$ index.php?url=$1 [QSA]
+RewriteRule ^(.*)$ index.php [QSA]
 

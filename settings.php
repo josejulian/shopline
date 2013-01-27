@@ -34,10 +34,6 @@ if (!defined('GITHUB_URL')) {
 }
 
 
-
-
-
-
 $DATABASE = array(
 	"engine" => 'mysql', //mysql, postgres, sqlite
 	'user' => 'root',

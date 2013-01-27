@@ -7,7 +7,7 @@ class MySql{
     public static function connect($host, $user, $password, $db){
         $connection = new mysqli($host, $user, $password, $db);
         if ($connection->connect_errno) {
-            echo "Fallo al contenctar a MySQL: " . $connection->connect_error;
+            echo "Error to connect to MySql: " . $connection->connect_error;
         }else{
             return $connection;
         }

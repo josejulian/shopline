@@ -25,7 +25,7 @@
                         <li class="dropdown">
                             <a id="a-login-dropdown" class="dropdown-toggle" href="#" data-toggle="dropdown"><i class="icon-signin"></i> Entrar <strong class="caret"></strong></a>
                             <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
-                                <form>
+                                <form method="POST" action="new_login">
                                     <div class="row-fluid" id="alert-error-login" style="display: none;">
                                         <div class="alert alert-error">
                                             <span>Email o Contraseña incorectos</span>
@@ -61,7 +61,9 @@
             </div>
         </div>
     </header>
-
+    <div id="test">
+        
+    </div>
     <div class='container'>
         <div class='main-container'>
             <div class="row-fluid">
@@ -155,6 +157,7 @@
                         email: email,
                         password: password
                     }).done(function(data){
+                        // $("#test").html(data);
                         if(data=="true"){
                             $(location).attr('href','/');
                             // $('#alert-success-login').slideToggle(300).delay(1500).slideToggle(300);

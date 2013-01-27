@@ -18,7 +18,7 @@ class Connect{
             $this->host = $DATABASE["host"];
             $this->db = $DATABASE["db"];
         }else{
-            echo "No existe DATABASE dentro de settings.php";
+            echo "Doesn't exist DATABASE within settings.php";
         }
     }
 

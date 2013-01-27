@@ -7,12 +7,17 @@
     require_once CORE_PATH . 'error.php';
     require_once CORE_PATH . 'urls.php';
     require_once CORE_PATH . 'request.php';
-    // require_once CORE_PATH . 'models.php';
-	
 
-	$urls = new Urls();
+    // print_r($GLOBALS);
+    $urls = new Urls();
 	$r = new Request();
-	// echo $r->get_url();
-	// print_r($r->get_args_GET());
+
+    // echo $r->get_url();
+    // echo "<br>";
+    // print_r($r->get_args_GET());  
+    // echo "<br>";
+    // print_r($r->get_args_POST());  
+    // echo "<br>";
+
 	$urls->url_parsing($r);
 ?>

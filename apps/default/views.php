@@ -7,28 +7,28 @@ function home($req){
 	// $users->is_registered_email("pedroj.1822@gmail.com");
 
 	if ($req->is_in_session("logged")) {
-		render_template("home2.html");
+		Views::render_template("home2.html");
 	}else{
-		render_template("home.html");
+		Views::render_template("home.html");
 	}
 }
 
-function login($req){
-	render_template("login.html");
+function login($req){ 
+	Views::render_template("login.html");
 }
 function register($req){
-    render_template("register.html");
+    Views::render_template("register.html");
 }
 function about_us($req){
-    render_template("about_us.html");
+    Views::render_template("about_us.html");
 }
 
 function admin_panel($req){
-	render_template("home2.html");
+	Views::render_template("home2.html");
 }
 
 function notifications($req){
-	render_template("html_pieces/notifications.html");
+	Views::render_template("html_pieces/notifications.html");
 }
 
 function new_login_user($req){
@@ -47,7 +47,7 @@ function new_login_user($req){
 
 function close_session($req){
 	$req->del_from_session("logged");
-	redirect_to_url("/");
+	Views::redirect_to_url("/");
 }
 
 function test($req){
