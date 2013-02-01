@@ -6056,3 +6056,59 @@ footer {
   text-align: center;
   box-shadow: 0px 0px 5px #ccc;
 }
+form.register {
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #fcfcfc;
+  background-image: -moz-linear-gradient(top, #ffffff, #f8f8f8);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f8f8f8));
+  background-image: -webkit-linear-gradient(top, #ffffff, #f8f8f8);
+  background-image: -o-linear-gradient(top, #ffffff, #f8f8f8);
+  background-image: linear-gradient(to bottom, #ffffff, #f8f8f8);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff8f8f8', GradientType=0);
+  border-color: #f8f8f8 #f8f8f8 #d2d2d2;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  border: 1px solid #d0d2d5;
+  border-bottom: 1px solid #bebfc2;
+  margin: 0 0 20px 0;
+  padding: 20px;
+  width: 400px;
+  height: 350px;
+}
+form.register .register-inputs {
+  height: 73.5%;
+}
+form.register input {
+  min-width: 250px;
+  width: 90%;
+  height: 50px;
+  margin: 10px 0px;
+}
+form.register label {
+  color: #404853;
+  display: block;
+  font-weight: bold;
+}
+form.register fieldset {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #e6e7e8;
+  background-image: -moz-linear-gradient(top, #ebeced, #dedfe0);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ebeced), to(#dedfe0));
+  background-image: -webkit-linear-gradient(top, #ebeced, #dedfe0);
+  background-image: -o-linear-gradient(top, #ebeced, #dedfe0);
+  background-image: linear-gradient(to bottom, #ebeced, #dedfe0);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffebeced', endColorstr='#ffdedfe0', GradientType=0);
+  border-color: #dedfe0 #dedfe0 #b7b9bb;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  border: none;
+  border-top: 1px solid #d0d2d5;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  margin: 5px 0 -20px -20px;
+  padding: 20px 20px;
+  width: 100%;
+  height: 20%;
+}

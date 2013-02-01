@@ -52,7 +52,16 @@
     </header>
     <div class="container">
         <div class='main-container'>
-        <h2>Este es el registro de usuarios</h2>   
+            <form class="register" method="POST" action="#">
+                <div class="register-inputs">
+                    <input type="text" name="register_email" id="register_email" placeholder="Correo electronico">
+                    <input type="password" name="register_password" id="register_password" placeholder="Contraseña">
+                    <input type="password" name="register_password2" id="register_password2" placeholder="Repita la contraseña">
+                </div>
+                <fieldset>                                        
+                    <input type="submit" class="btn btn-primary" name="login_submit" id="login_submit" value="Login">
+                </fieldset>
+            </form>
         </div>
     </div>
 
