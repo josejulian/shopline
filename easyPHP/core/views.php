@@ -1,4 +1,5 @@
 <?php
+/**/
 class Views
 {	
 	function __construct()
@@ -16,7 +17,7 @@ class Views
 		if(is_readable($template_path)){
 			require $template_path;
 		}else{
-			echo "no se puede renderizar porque no existe el template";exit;
+			echo "Doesn't can to render the template.";exit;
 		}
 	}
 
@@ -26,7 +27,7 @@ class Views
 		if(is_readable($template_path)){
 			require $template_path;
 		}else{
-			echo "no se puede renderizar porque no existe el template";exit;
+			echo "Doesn't can to render the template because the render doesn't exist.";exit;
 		}
 	}
 
