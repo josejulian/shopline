@@ -52,16 +52,73 @@
     </header>
     <div class="container">
         <div class='main-container'>
-            <form class="register" method="POST" action="#">
-                <div class="register-inputs">
-                    <input type="text" name="register_email" id="register_email" placeholder="Correo electronico">
-                    <input type="password" name="register_password" id="register_password" placeholder="Contraseña">
-                    <input type="password" name="register_password2" id="register_password2" placeholder="Repita la contraseña">
+
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Registro exitoso!</h3>
+  </div>
+  <div class="modal-body">
+    <p>Felicidades!, ya haces parte de shopline, ahora te redirigiremos 
+        hacia la pagina principal en donde podras loguearte con el email y la contraseña que acabas de registrar. Bienvenido!</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true" id="btn-modal-thanks">Gracias</button>
+  </div>
+</div>
+            <div class"row-fluid">
+                <div class="span5 offset3">
+                    <form class="register" method="POST" action="#">
+                            <div class="register-inputs">
+                                <div class="row-fluid" id="alert-error-1" style="display: none;">
+                                    <div class="span12 alert alert-error">
+                                        <span>Este email ya se encuentra registrado</span>
+                                    </div>
+                                </div>
+                                <div class="row-fluid">
+                                    <div class="span12">
+                                        <input type="text" name="register_email" id="register_email" placeholder="Correo electronico" required autofocus>
+                                    </div>
+                                </div>
+                                <div class="row-fluid" id="alert-error-2" style="display: none;">
+                                    <div class="span12 alert alert-error">
+                                        <span>Contraseña muy corta (minimo 8 caracteres)</span>
+                                    </div>
+                                </div>
+                                <div class="row-fluid">
+                                    <div class="span12">
+                                        <input type="password" name="register_password" id="register_password" placeholder="Contraseña" required>
+                                    </div>
+                                </div>
+                                <div class="row-fluid" id="alert-error-3" style="display: none;">
+                                    <div class="span12 alert alert-error">
+                                        <span>Las contraseñas no coinciden</span>
+                                    </div>
+                                </div>
+                                <div class="row-fluid">
+                                    <div class="span12">
+                                        <input type="password" name="register_password2" id="register_password2" placeholder="Repita la contraseña" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row-fluid" id="alert-info-1" style="display: none;">
+                                    <div class="span12 alert alert-info">
+                                        <span>Debe aceptar las politicas de Shopline</span>
+                                    </div>
+                                </div>
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <input type="checkbox" id="checkbox_policy"><a href=""> Acepto las politicas de Shopline </a>
+                                </div>
+                            </div>
+
+                            <fieldset>
+                                <input type="submit" class="btn btn-primary" name="btn-register" id="btn-register" value="Login">
+                            </fieldset>
+                    </form>
                 </div>
-                <fieldset>                                        
-                    <input type="submit" class="btn btn-primary" name="login_submit" id="login_submit" value="Login">
-                </fieldset>
-            </form>
+            </div>
         </div>
     </div>
 
@@ -92,5 +149,49 @@
     <script src="<?php echo STATIC_DIR; ?>js/jquery.js"></script>
     <script src="<?php echo STATIC_DIR; ?>js/bootstrap.js"></script>
     
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#btn-modal-thanks").click(function(e){
+                $(location).attr('href','/');
+            });
+            $('#btn-register').click(function(e){
+                var email = $("#register_email").val();
+                var pass1 = $("#register_password").val();
+                var pass2 = $("#register_password2").val();
+                var checked = $("#checkbox_policy").attr("checked");
+                if((email != "") && (pass1 != "") && (pass2 != "")){   
+                    e.preventDefault();
+                    if(pass1.length < 8){
+                        $('#alert-error-2').slideToggle(300).delay(1500).slideToggle(300);
+                    }else{
+                        if(pass1 != pass2){
+                            $('#alert-error-3').slideToggle(300).delay(1500).slideToggle(300);
+                        }else{
+                            if (!checked) {
+                                $('#alert-info-1').slideToggle(300).delay(1500).slideToggle(300);
+                            }else{
+                                $.post("new_record", { 
+                                    email: email,
+                                    password: pass1
+                                }).done(function(data){
+                                    // $("#test").html(data);
+                                    if(data=="true"){
+                                        $('#myModal').modal('show');
+                                        // alert("si se puede registrar");
+                                        // $('#alert-success-login').slideToggle(300).delay(1500).slideToggle(300);
+                                    }else{
+                                        if(data=="email_already_registered"){
+                                            $('#alert-error-1').slideToggle(300).delay(1500).slideToggle(300);
+                                        }
+                                    }
+                                });               
+                            }
+                        }
+                    }
+                }
+            });
+        });
+
+    </script>
 </body>
 </html>

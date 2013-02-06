@@ -28,6 +28,10 @@ $urls_array = array(
         "app" => "default",
         "method" => "new_login_user"
         ),
+    "^\/new_record$" => array(
+        "app" => "default",
+        "method" => "new_record_user"
+        ),
     "^\/close_session$" => array(
         "app" => "default",
         "method" => "close_session"

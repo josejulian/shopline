@@ -45,6 +45,18 @@ function new_login_user($req){
 	}
 }
 
+function new_record_user($req){
+	$email = $req->get_POST("email");
+	$pass = $req->get_POST("password");
+	$user = new Users(); 
+	if($user->is_registered_email($email)){
+		echo "email_already_registered";
+	}else{
+		$user->save($email,$pass);
+		echo "true";
+	}
+}
+
 function close_session($req){
 	$req->del_from_session("logged");
 	Views::redirect_to_url("/");

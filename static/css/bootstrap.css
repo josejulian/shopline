@@ -6074,14 +6074,8 @@ form.register {
   border-bottom: 1px solid #bebfc2;
   margin: 0 0 20px 0;
   padding: 20px;
-  width: 400px;
-  height: 350px;
 }
-form.register .register-inputs {
-  height: 73.5%;
-}
-form.register input {
-  min-width: 250px;
+form.register .register-inputs input {
   width: 90%;
   height: 50px;
   margin: 10px 0px;
@@ -6110,5 +6104,9 @@ form.register fieldset {
   margin: 5px 0 -20px -20px;
   padding: 20px 20px;
   width: 100%;
-  height: 20%;
+}
+form.register fieldset input {
+  width: 90%;
+  height: 50px;
+  margin: 10px 0px;
 }
